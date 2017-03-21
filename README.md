@@ -42,14 +42,14 @@ This is a simple framework that uses simple functions, to order your project and
 - [x] Navbar
 - [x]	Card
 - [x]	Footer
-- []	Badges
-- []	Breadcrumbs
-- []	Chips
-- []	Collections
-- []	Forms
-- []	Icons
-- []	Pagination
-- []	Preloader
+- [ ]	Badges
+- [ ]	Breadcrumbs
+- [ ]	Chips
+- [ ]	Collections
+- [ ]	Forms
+- [ ]	Icons
+- [ ]	Pagination
+- [ ]	Preloader
 
 ## Javascript:
 
