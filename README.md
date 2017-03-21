@@ -4,10 +4,10 @@
 
 ## Prerequisites
 
-	1. Materialize(Optional, but it can ** not ** be ** updated **)
+	1. Materialize(Optional, but it can not be updated)
 	2. Write a file that you can call load.php:
 
-			```
+		```
 			<?php
 			require_once('/usr/share/materialize-php-framework/load.php');
 
@@ -30,7 +30,7 @@
 			$pages = ['Page-1'=>'index.php','Page-2'=>'index.php','More'=>'More.php'];
 			?>
 
-			```
+		```
 
 ## Getting install
 
