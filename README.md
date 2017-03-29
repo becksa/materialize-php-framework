@@ -9,12 +9,9 @@ This is a simple framework that uses simple functions, to order your project and
 
 ```
 	<?php
-	require_once('/usr/share/materialize-php-framework/load.php');
-
 	###########################
 	# Define globals variable #
 	###########################
-	define('site_name','Test');
 	define('materialize_css','materialize/css/materialize.min.css'); #if you want, define path of materialize.min.css
 	define('materialize_js', 'materialize/js/materialize.min.js'); #if you want, define path of materialize.min.js
 
@@ -24,13 +21,11 @@ This is a simple framework that uses simple functions, to order your project and
 	define('bg_color','teal'); #if you want, define background-color of project
 	define('tt_color','white-text'); #if you want, define background-color of project
 
-	######################
-	# Define links pages #
-	######################
-	$pages = ['Page-1'=>'index.php','Page-2'=>'index.php','More'=>'More.php'];
+	require_once('/usr/share/materialize-php-framework/load.php');
 	?>
 
 ```
+3. Include **load.php** into your `page.php`
 
 ## Getting install
 
@@ -54,3 +49,10 @@ This is a simple framework that uses simple functions, to order your project and
 ## Javascript:
 
 - [x] Dialogs
+- [x] Feature Discovery
+- [x]	Parallax
+- [x] SideNav
+
+## Other:
+
+- [x] Header
