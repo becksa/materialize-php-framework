@@ -1,24 +1,28 @@
 <?php
-#############################################################################
-# php-material-framework Copyright (C) 2017  Alessio Beccati                #
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-# This program is free software: you can redistribute it and/or modify      #
-# it under the terms of the GNU Affero General Public License as            #
-# published by the Free Software Foundation, either version 3 of the        #
-# License, or (at your option) any later version.                           #
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-# This program is distributed in the hope that it will be useful,           #
-# but WITHOUT ANY WARRANTY; without even the implied warranty of            #
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             #
-# GNU Affero General Public License for more details.                       #
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-# You should have received a copy of the GNU Affero General Public License  #
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.     #
-#############################################################################
 
 class Nav{
 
-	function __construct($args = []){
+	private static $init = false;
+
+	function build(){
+		return new self();
+	}
+
+	function init(){
+		if(!self::$init){
+		?>
+		<script>
+			$( document ).ready(function() {
+				$(".button-collapse").sideNav();
+			});
+		</script>
+		<?php
+		self::$init = true;
+		}
+	}
+
+	function create_nav($args = []){
+		$this->init();
 
 		if(!isset($args['logo']))
 			$args['logo'] = 'Logo';
@@ -30,11 +34,6 @@ class Nav{
 			$args['pages'] = ['#'=>'No pages defined'];
 
 	?>
-		<script>
-			$( document ).ready(function() {
-				$(".button-collapse").sideNav();
-			});
-		</script>
 		<nav class="<?php echo $args['bg_color'] ?>">
 			<div class="nav-wrapper">
 				<a href="<?php echo basename($_SERVER['PHP_SELF']); ?>" class="brand-logo"><?php echo $args['logo'] ?></a>

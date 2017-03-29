@@ -18,52 +18,70 @@
 
 class Footer{
 
-	function __construct($args = []){
+	private $title = 'Footer Content';
+	private $bg_color = bg_color;
+	private $tt_color = tt_color;
+	private $content = 'You can use rows and columns here </br> to organize your footer content.';
+	private $pages = [];
+	private $dev = '#';
 
-		if(!isset($args['title']))
-			$args['title'] = 'Footer Content';
+	function build(){
+    static $static_class = null;
+    if(!$static_class)
+      $static_class = new self();
+    return $static_class;
+	}
 
-		if(!isset($args['bg_color']))
-			$args['bg_color'] =  bg_color;
+	function set_title($title){
+		$this->title = $title;
+	}
 
-		if(!isset($args['tt_color']))
-			$args['tt_color'] = tt_color;
+	function set_bg_color($bg_color){
+		$this->bg_color = $bg_color;
+	}
 
-		if(!isset($args['content']))
-			$args['content'] = 'You can use rows and columns here </br> to organize your footer content.';
+	function set_tt_color($tt_color){
+		$this->tt_color = $tt_color;
+	}
 
-		if(!isset($args['pages']))
-			$args['pages'] = [];
+	function set_content($content){
+		$this->content = $content;
+	}
 
-		if(!isset($args['developer']))
-			$args['developer'] = '#';
+	function set_pages($pages){
+		$this->pages = $pages;
+	}
 
+	function set_dev($dev){
+		$this->dev = $dev;
+	}
+
+	function display_footer(){
 	?>
-	<footer class="page-footer <?php echo $args['bg_color'] ?> <?php echo $args['tt_color'] ?>">
+	<footer class="page-footer <?php echo $this->bg_color ?> <?php echo $this->tt_color ?>">
 		<div class="container">
 			<div class="row">
 				<div class="col s12 m6 l6">
-					<h5 class="<?php echo $args['tt_color'] ?>">Footer Content</h5>
-					<div class="row <?php echo $args['tt_color'] ?>"><?php echo $args['content'] ?></div>
+					<h5 class="<?php echo $this->tt_color ?>-text"><?php echo $this->title ?></h5>
+					<div class="row <?php echo $this->tt_color ?>-text"><?php echo $this->content ?></div>
 				</div>
 				<div class="col l4 offset-l2 s12">
-					<h5 class="white-text">Links</h5>
+					<h5 class="<?php echo $this->tt_color ?>-text">Links</h5>
 					<ul>
-					<?php foreach($args['pages'] as $keys=>$index): ?>
-						<li><a class="grey-text text-lighten-3" href="<?php echo $index ?>"><?php echo $keys ?></a></li>
+					<?php foreach($this->pages as $keys=>$index): ?>
+						<li><a class="<?php echo $this->tt_color ?>-text" href="<?php echo $index ?>"><?php echo $keys ?></a></li>
 					<?php endforeach ?>
 					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="footer-copyright">
-			<div class="container">
+			<div class="container <?php echo $this->tt_color ?>-text">
 				© <?php echo date('Y')?> Copyright Text
-				<a class="grey-text text-lighten-4 right" href="">Developer</a>
+				<a class="<?php echo $this->tt_color ?>-text right" href="<?php echo $this->dev ?>">Developer</a>
 			</div>
 		</div>
 	</footer>
 	<?php
 	}
-
 }

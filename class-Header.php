@@ -20,6 +20,8 @@ class Header{
 
 	private $js = [];
 	private $css = [];
+	private $title = 'Default';
+	private $logo = '';
 
 	function build(){
 		static $static_class = null;
@@ -28,28 +30,40 @@ class Header{
 		return $static_class;
 	}
 
-	function laod_js($name_js = '',$path_js){
+	function load_js($path_js,$name_js = ''){
 		if($name_js)
 			$this->js[$name_js] = $path_js;
 		else
 			$this->js[] = $path_js;
 	}
 
-	function load_css($name_css = '',$path_css){
+	function load_css($path_css,$name_css = ''){
 		if($name_css)
 			$this->css[$name_css] = $path_css;
 		else
 			$this->css[] = $path_css;
 	}
 
-	function delete_js($name_js){
+	function take_js($name_js){
 		if($js['$name_js'])
 			unset($js['$name_js']);
 	}
 
-	function delete_css($name_css){
+	function take_css($name_css){
 		if($js['$name_css'])
 			unset($js['$name_css']);
+	}
+
+	function set_title($title){
+		$this->title = $title;
+	}
+
+	function set_logo($logo){
+		$this->logo = $logo;
+	}
+
+	function load_meta(){
+
 	}
 
 	function get_all_loaded(){
@@ -67,6 +81,8 @@ class Header{
 	function display_header(){
 	?>
 	<head>
+		<title><?php echo $this->title ?></title>
+		<link rel="icon" href="<?php echo $this->logo?>" type="image/x-icon"/>
 		<!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<!--Import materialize.css-->
@@ -78,13 +94,13 @@ class Header{
 		<!--Import materialize.min.js -->
 			<script type="text/javascript" src="<?php echo materialize_js ?>"></script>
 		<!--Import other *.css-->
-		<?php foreach($this->css as $path_css): if( is_file($path_css) ):?>
+		<?php foreach($this->css as $path_css):?>
       <link type="text/css" rel="stylesheet" href="<?php echo $path_css ?>" />
-		<?php endif; endforeach; ?>
+		<?php endforeach; ?>
 		<!--Import other *.js-->
-			<?php foreach($this->js as $path_js): if( is_file($path_js) ):?>
+			<?php foreach($this->js as $path_js):?>
 			<script type="text/javascript" src="<?php echo $path_js; ?>"></script>
-			<?php endif; endforeach; ?>
+			<?php endforeach; ?>
 	</head>
 	<?php
 	}
