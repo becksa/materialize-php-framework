@@ -20,9 +20,10 @@ class Footer{
 
 	private $title = 'Footer Content';
 	private $bg_color = bg_color;
-	private $tt_color = tt_color;
+	private $tt_color = 'white-text';
+	private $classes;
 	private $content = 'You can use rows and columns here </br> to organize your footer content.';
-	private $pages = [];
+	private $pages = ['No pages defined'=>'#'];
 	private $dev = '#';
 
 	function build(){
@@ -36,12 +37,16 @@ class Footer{
 		$this->title = $title;
 	}
 
-	function set_bg_color($bg_color){
+	function set_bg($bg_color){
 		$this->bg_color = $bg_color;
 	}
 
-	function set_tt_color($tt_color){
+	function set_text($tt_color){
 		$this->tt_color = $tt_color;
+	}
+
+	function set_class($classes){
+		$this->classes = $classes;
 	}
 
 	function set_content($content){
@@ -58,27 +63,27 @@ class Footer{
 
 	function display_footer(){
 	?>
-	<footer class="page-footer <?php echo $this->bg_color ?> <?php echo $this->tt_color ?>">
+	<footer class="page-footer <?php echo $this->bg_color ?> <?php echo $this->tt_color ?> <?php echo $this->classes ?>">
 		<div class="container">
 			<div class="row">
 				<div class="col s12 m6 l6">
-					<h5 class="<?php echo $this->tt_color ?>-text"><?php echo $this->title ?></h5>
-					<div class="row <?php echo $this->tt_color ?>-text"><?php echo $this->content ?></div>
+					<h5 class="<?php echo $this->tt_color ?>"><?php echo $this->title ?></h5>
+					<div class="<?php echo $this->tt_color ?>-text"><?php echo $this->content ?></div>
 				</div>
 				<div class="col l4 offset-l2 s12">
-					<h5 class="<?php echo $this->tt_color ?>-text">Links</h5>
+					<h5 class="<?php echo $this->tt_color ?>">Links</h5>
 					<ul>
 					<?php foreach($this->pages as $keys=>$index): ?>
-						<li><a class="<?php echo $this->tt_color ?>-text" href="<?php echo $index ?>"><?php echo $keys ?></a></li>
+						<li><a class="<?php echo $this->tt_color ?>" href="<?php echo $index ?>"><?php echo $keys ?></a></li>
 					<?php endforeach ?>
 					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="footer-copyright">
-			<div class="container <?php echo $this->tt_color ?>-text">
+			<div class="container <?php echo $this->tt_color ?>">
 				© <?php echo date('Y')?> Copyright Text
-				<a class="<?php echo $this->tt_color ?>-text right" href="<?php echo $this->dev ?>">Developer</a>
+				<a class="<?php echo $this->tt_color ?> right" href="<?php echo $this->dev ?>">Developer</a>
 			</div>
 		</div>
 	</footer>

@@ -37,12 +37,16 @@ function set_footer_title($title){
 	Footer::build()->set_title($title);
 }
 
-function set_footer_bg_color($bg_color){
-	Footer::build()->set_bg_color($bg_color);
+function set_footer_bg($bg_color){
+	Footer::build()->set_bg($bg_color);
 }
 
-function set_footer_tt_color($tt_color){
-	Footer::build()->set_tt_color($tt_color);
+function set_footer_text($tt_color){
+	Footer::build()->set_text($tt_color);
+}
+
+function set_footer_class($class){
+	Footer::build()->set_class($class);
 }
 
 function set_footer_content($content){
@@ -83,11 +87,30 @@ function btn_fixed($args = []){
 	return Button::build()->button_fixed($args);
 }
 
+function btn_submit($args = []){
+	return Button::build()->button_submit($args);
+}
+
+######################
+# functions to Input #
+######################
+function input($args = []){
+	return Form::build()->input($args);
+}
+
+function textarea($args = []){
+	return Form::build()->textarea($args);
+}
+
+function datepicker($args = []){
+	return Form::build()->datepicker($args);
+}
+
 ####################
 # functions to Nav #
 ####################
 function create_nav($args = []){
-	new Nav($args);
+	Nav::build()->create_nav($args);
 }
 
 #######################
@@ -104,8 +127,8 @@ function msg_box_rnd($message = 'Default Dialog',$time = '4000'){
 #########################
 # functions to Parallax #
 #########################
-function create_parallax($image_path){
-	Parallax::build()->create_parallax($image_path);
+function create_parallax($image_path,$height = '500',$width = ''){
+	Parallax::build()->create_parallax($image_path,$height,$width);
 }
 
 function create_section($args = []){
@@ -122,6 +145,45 @@ function create_feature($args = []){
 ########################
 # functions to SideNav #
 ########################
-function create_side_nav($pages){
-	SideNav::build()->create_side_nav($pages);
+function create_side_nav($pages,$args = []){
+	SideNav::build()->create_side_nav($pages,$args);
+}
+
+######################
+# functions to Chips #
+######################
+function chip($args = []){
+	return Chips::build()->chip($args);
+}
+
+######################
+# functions to Slide #
+######################
+function create_slider($folder_path){
+	Slider::build()->create_slider($folder_path);
+}
+
+##########################
+# functions to Preloader #
+##########################
+function preloader_determinate($percentual){
+	Preloader::build()->preloader_linear_determinate($percentual);
+}
+
+function preloader_indeterminate(){
+	Preloader::build()->preloader_linear_indeterminate();
+}
+
+###########################
+# functions to Collection #
+###########################
+function create_collection($args = []){
+	Collection::build()->create_collection($args);
+}
+
+###########################
+# functions to Collection #
+###########################
+function create_modal($args = []){
+	Modal::build()->create_modal($args);
 }

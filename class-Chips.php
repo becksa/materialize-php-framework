@@ -16,42 +16,34 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.     #
 #############################################################################
 
-class FeatureDiscovery{
+class Chips{
 
 	function build(){
 		return new self();
 	}
 
-	function create_feature($args = []){
+	function chip($args = []){
 
-  if(!isset($args['id']))
-    $args['id'] = bg_color;
+		if(!isset($args['id']))
+			$args['id'] = '';
 
-  if(!isset($args['class']))
-    $args['class'] = bg_color;
+		if(!isset($args['class']))
+			$args['class'] = '';
 
-  if(!isset($args['bg']))
-    $args['bg'] = bg_color;
+		if(!isset($args['bg']))
+			$args['bg'] = 'white';
 
-  if(!isset($args['more']))
-    $args['more'] = '';
+		if(!isset($args['more']))
+			$args['more'] = '';
 
-  if(!isset($args['title']))
-    $args['title'] = 'Default title';
+		if(!isset($args['content']))
+			$args['content'] = 'Default';
 
-  if(!isset($args['content']))
-    $args['content'] = '';
+		if(!isset($args['images']))
+			$args['images'] = 'error link';
 
-	?>
-  	<!-- Tap Target Structure -->
-		<div id="<?php echo $args['id'] ?>" class="tap-target <?php echo $args['bg'] ?> <?php echo $args['class'] ?>" <?php echo $args['more'] ?>>
-			<div class="tap-target-content">
-      	<h3><?php echo $args['title'] ?></h3>
-				<div class="row">
-					<?php echo $args['content'] ?>
-				</div>
-			</div>
-		</div>
-	<?php
+
+		return '<div id="'.$args['id'].'" class="chip '.$args['class'].' '.$args['bg'].'"><img src="'.$args['images'].'" alt="Links"><a class="black-text" '.$args['more'].'>'.$args['content'].'</a></div>';
 	}
+
 }

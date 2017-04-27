@@ -16,42 +16,59 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.     #
 #############################################################################
 
-class FeatureDiscovery{
+class Slider{
+
+	private static $init = false;
 
 	function build(){
 		return new self();
 	}
 
-	function create_feature($args = []){
+	function init(){
+    if(!self::$init):
+    ?>
+    <script>
+			$(document).ready(function(){
+				$('.slider').slider();
+			});
+    </script>
+    <?php
+    self::$init = true;
+    endif;
+	}
 
-  if(!isset($args['id']))
-    $args['id'] = bg_color;
-
-  if(!isset($args['class']))
-    $args['class'] = bg_color;
-
-  if(!isset($args['bg']))
-    $args['bg'] = bg_color;
-
-  if(!isset($args['more']))
-    $args['more'] = '';
-
-  if(!isset($args['title']))
-    $args['title'] = 'Default title';
-
-  if(!isset($args['content']))
-    $args['content'] = '';
-
+	function create_slider($folder_path){
+	$this->init();
+	$files = glob("$folder_path/*.{jpg,png,gif}", GLOB_BRACE);
 	?>
-  	<!-- Tap Target Structure -->
-		<div id="<?php echo $args['id'] ?>" class="tap-target <?php echo $args['bg'] ?> <?php echo $args['class'] ?>" <?php echo $args['more'] ?>>
-			<div class="tap-target-content">
-      	<h3><?php echo $args['title'] ?></h3>
-				<div class="row">
-					<?php echo $args['content'] ?>
-				</div>
-			</div>
-		</div>
+	<div class="slider" style="margin-bottom: 2%;">
+		<ul class="slides">
+		<?php foreach($files as $file): if(is_file($file)):?>
+			<li>
+				<img src="<?php echo $file?>">
+			</li>
+		<?php endif;endforeach; ?>
+		</ul>
+	</div>
 	<?php
 	}
+
+	function create_text_slider($folder_path,$title,$description){
+	$this->init();
+	$files = glob("$folder_path/*.{jpg,png,gif}", GLOB_BRACE);
+	?>
+	<div class="slider">
+		<ul class="slides">
+			<li>
+				<img src="http://lorempixel.com/580/250/nature/1" />
+				<div class="caption center-align">
+					<h3><?php echo $title ?></h3>
+					<h5 class="light grey-text text-lighten-3"><?php echo $description ?></h5>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<?php
+	}
+
 }
